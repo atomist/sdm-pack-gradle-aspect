@@ -1,8 +1,8 @@
 import { LocalProject } from "@atomist/automation-client";
 import { doWithFiles } from "@atomist/automation-client/lib/project/util/projectUtils";
 import {
+    LoggingProgressLog,
     spawnLog,
-    StringCapturingProgressLog,
 } from "@atomist/sdm";
 import {
     Aspect,
@@ -24,7 +24,7 @@ const GradleDirectDep = "gradle-direct-dep";
 
 async function executeGradlePlugin(cwd: string) {
     const gradleCommand = await getGradleCommandLine(cwd);
-    const log = new StringCapturingProgressLog();
+    const log = new LoggingProgressLog("atomist_gradle_plugin", "debug");
     await spawnLog(gradleCommand, ["--init-script", "atomist-dependency-plugin.gradle", "atomist"],
         { log, logCommand: false, cwd});
 }
