@@ -26,7 +26,7 @@ async function executeGradlePlugin(cwd: string) {
     const gradleCommand = await getGradleCommandLine(cwd);
     const log = new StringCapturingProgressLog();
     await spawnLog(gradleCommand, ["--init-script", "atomist-dependency-plugin.gradle", "atomist"],
-        { log, logCommand: false});
+        { log, logCommand: false, cwd});
 }
 
 export const GradleDirectDependencies: Aspect<GradleDependency> = {
@@ -66,7 +66,7 @@ export const GradleDirectDependencies: Aspect<GradleDependency> = {
         if (params) {
             const targetFP = params.fp;
             const newVersion = targetFP.data.version ? targetFP.data.version : "";
-            await doWithFiles(p, "**/build.(gradle|gradle.kts)", async f => {
+            await doWithFiles(p, "**/build{*.gradle,*.gradle.kts}", async f => {
                 const fileContent = await fs.readFile(f.path, "UTF-8");
                 const newContent = updateGradleVersion(fileContent, {group: targetFP.data.group, name: targetFP.data.name}, newVersion);
                 await fs.writeFile(f.path, newContent, {encoding: "UTF-8"});

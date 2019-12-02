@@ -209,8 +209,6 @@ export function updateGradleVersion(
             updatePropertyFileGlobalVariables,
             updateKotlinVariablesByExtra,
         ];
-
-        // eslint-disable-next-line guard-for-in
         for (const updateFunction of updateFunctions) {
             const gradleContentUpdated = updateFunction(
                 dependency,
