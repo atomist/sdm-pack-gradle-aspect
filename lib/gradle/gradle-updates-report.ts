@@ -1,6 +1,9 @@
 import { logger } from "@atomist/automation-client";
 import { existsSync } from "fs";
-import { readFile, writeFile } from "fs-extra";
+import {
+    readFile,
+    writeFile,
+} from "fs-extra";
 import { join } from "path";
 
 const GRADLE_DEPENDENCY_REPORT_FILENAME = "gradle-dependency-report.json";
