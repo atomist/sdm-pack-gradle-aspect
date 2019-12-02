@@ -59,11 +59,10 @@ allprojects {
 }
 
 gradle.buildFinished {
-   def outputFile = ne
-   w File('${GRADLE_DEPENDENCY_REPORT_FILENAME}')
+   def outputFile = new File('${GRADLE_DEPENDENCY_REPORT_FILENAME}')
    def json = JsonOutput.toJson(output)
    outputFile.write json
-}  `;
+}`;
     const gradleInitFile = join(localDir, "atomist-dependency-plugin.gradle");
     logger.debug(
         "Creating atomist-dependency-plugin.gradle file with renovate gradle plugin",
