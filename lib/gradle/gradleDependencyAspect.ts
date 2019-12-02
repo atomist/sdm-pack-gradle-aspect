@@ -46,14 +46,18 @@ export const GradleDirectDependencies: Aspect<GradleDependency> = {
                 };
                 return gd;
             }).map(gd => {
+                const data = {
+                    ...gd,
+                    version: !gd.version ? "managed" : gd.version,
+                };
                 const fp: FP = {
-                    name: "gradle-direct-dep",
+                    name: `${gd.group}:${gd.name}`,
                     version: "1.0.0",
-                    type: "gradle-direct-dep",
+                    type: GradleDirectDep,
                     abbreviation: "gradle",
                     displayType: "Gradle dependency",
-                    data: gd,
-                    sha: sha256(JSON.stringify(gd)),
+                    data,
+                    sha: sha256(JSON.stringify(data)),
                 };
                 return fp;
             });
