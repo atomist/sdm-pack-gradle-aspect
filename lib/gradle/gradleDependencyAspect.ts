@@ -77,5 +77,7 @@ export const GradleDirectDependencies: Aspect<GradleDependency> = {
             });
         }
     },
+    toDisplayableFingerprintName: name => name,
+    toDisplayableFingerprint: fp => !fp.data.version ? "managed" : fp.data.version,
 
 };
