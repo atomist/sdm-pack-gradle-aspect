@@ -14,4 +14,5 @@
  * limitations under the License.
  */
 
-export { SeedSupport } from "./lib/seed";
+export { GradleDirectDependencies } from "./lib/gradle/gradleDependencyAspect";
+export { GradleDependency } from "./lib/gradle/gradleBuildFile";
