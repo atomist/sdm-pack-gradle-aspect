@@ -69,7 +69,7 @@ export const GradleDirectDependencies: Aspect<GradleDependency> = {
     apply: async (p, papi, params) => {
         if (params) {
             const targetFP = params.fp;
-            const newVersion = targetFP.data.version ? targetFP.data.version : "";
+            const newVersion = !targetFP.data.version ? "" : targetFP.data.version;
             await doWithFiles(p, "**/build{*.gradle,*.gradle.kts}", async f => {
                 const fileContent = await fs.readFile(f.path, "UTF-8");
                 const newContent = updateGradleVersion(fileContent, {group: targetFP.data.group, name: targetFP.data.name}, newVersion);

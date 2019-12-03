@@ -39,7 +39,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 def output = new ConcurrentLinkedQueue<>();
 
 allprojects {
-  tasks.register("atomist") {
+  task atomist {
     doLast {
         def project = ['project': project.name]
         output << project

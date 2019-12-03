@@ -74,5 +74,9 @@
   "engines": {
     "node": ">=8.2.0",
     "npm": ">=5.0.0"
+  },
+  "dependencies": {
+    "@types/semver": "^6.2.0",
+    "semver": "^6.3.0"
   }
 }
