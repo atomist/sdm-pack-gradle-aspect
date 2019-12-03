@@ -16,3 +16,4 @@
 
 export { GradleDirectDependencies } from "./lib/gradle/gradleDependencyAspect";
 export { GradleDependency } from "./lib/gradle/gradleBuildFile";
+export  { GradleWrapperVersion, GradleWrapperInformation } from "./lib/gradle/gradleWrapperVersionAspect";
